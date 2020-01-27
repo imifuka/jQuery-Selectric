@@ -492,7 +492,8 @@
      */
     getItemsMarkup: function (items) {
       var _this = this;
-      var markup = '<ul role="listbox" id="' + _this.id + '">';
+      var multi = _this.state.multiple ? ' aria-multiselectable="true"' : '';
+      var markup = '<ul role="listbox" id="' + _this.id + '"' + multi + '>';
 
       if ($.isFunction(_this.options.listBuilder) && _this.options.listBuilder) {
         items = _this.options.listBuilder(items);
