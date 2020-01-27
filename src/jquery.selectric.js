@@ -208,6 +208,7 @@
     /** Initializes */
     init: function (opts) {
       var _this = this;
+      var originalLabel = $('[for="' + _this.$element.prop('id') + '"]').text();
 
       // Set options
       _this.options = $.extend(true, {}, $.fn[pluginName].defaults, _this.options, opts);
@@ -232,7 +233,7 @@
       // Create elements
       var input = $('<input/>', {
         'class': _this.classes.input, 'readonly': _this.utils.isMobile(),
-        'aria-autocomplete': 'list', 'aria-owns': _this.id, 'role': 'combobox', 'aria-haspopup': 'true', 'aria-expanded': 'false', 'aria-activedescendant': ''
+        'aria-autocomplete': 'list', 'aria-owns': _this.id, 'role': 'combobox', 'aria-haspopup': 'true', 'aria-expanded': 'false', 'aria-activedescendant': '', 'aria-label': originalLabel
       });
       var items = $('<div/>', { 'class': _this.classes.items, 'tabindex': -1 });
       var itemsScroll = $('<div/>', { 'class': _this.classes.scroll });
