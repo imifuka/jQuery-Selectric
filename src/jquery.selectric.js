@@ -718,7 +718,7 @@
         _this.highlight(goToItem);
       }
 
-      // Tab / Enter / ESC
+      // Enter
       if (isSelectKey && _this.state.opened) {
         _this.select(idx);
 
@@ -1111,7 +1111,7 @@
     keys: {
       previous: [37, 38],                 // Left / Up
       next: [39, 40],                 // Right / Down
-      select: [9, 13, 27],              // Tab / Enter / Escape
+      select: [13],              // Enter
       open: [13, 32, 37, 38, 39, 40], // Enter / Space / Left / Up / Right / Down
       close: [9, 27]                   // Tab / Escape
     },
