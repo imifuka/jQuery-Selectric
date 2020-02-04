@@ -692,6 +692,7 @@
       var isNextKey = $.inArray(key, keys.next) > -1;
       var isSelectKey = $.inArray(key, keys.select) > -1;
       var isOpenKey = $.inArray(key, keys.open) > -1;
+      var isCloseKey = $.inArray(key, keys.close) > -1;
       var idx = _this.state.highlightedIdx;
       var isFirstOrLastItem = (isPrevKey && idx === 0) || (isNextKey && (idx + 1) === _this.items.length);
       var goToItem = 0;
@@ -732,6 +733,10 @@
       // Space / Enter / Left / Up / Right / Down
       if (isOpenKey && !_this.state.opened) {
         _this.open();
+      }
+
+      if (isCloseKey && _this.state.opened) {
+        _this.close();
       }
     },
 
