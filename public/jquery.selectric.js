@@ -9,7 +9,7 @@
  *    /,'
  *   /'
  *
- * Selectric ϟ v1.13.0 (Jan 27 2020) - http://lcdsantos.github.io/jQuery-Selectric/
+ * Selectric ϟ v1.13.0 (Feb 04 2020) - http://lcdsantos.github.io/jQuery-Selectric/
  *
  * Copyright (c) 2020 Leonardo Santos; MIT License
  *
@@ -709,6 +709,7 @@
       var isNextKey = $.inArray(key, keys.next) > -1;
       var isSelectKey = $.inArray(key, keys.select) > -1;
       var isOpenKey = $.inArray(key, keys.open) > -1;
+      var isCloseKey = $.inArray(key, keys.close) > -1;
       var idx = _this.state.highlightedIdx;
       var isFirstOrLastItem = (isPrevKey && idx === 0) || (isNextKey && (idx + 1) === _this.items.length);
       var goToItem = 0;
@@ -735,7 +736,7 @@
         _this.highlight(goToItem);
       }
 
-      // Tab / Enter / ESC
+      // Enter
       if (isSelectKey && _this.state.opened) {
         _this.select(idx);
 
@@ -749,6 +750,10 @@
       // Space / Enter / Left / Up / Right / Down
       if (isOpenKey && !_this.state.opened) {
         _this.open();
+      }
+
+      if (isCloseKey && _this.state.opened) {
+        _this.close();
       }
     },
 
@@ -1128,7 +1133,7 @@
     keys: {
       previous: [37, 38],                 // Left / Up
       next: [39, 40],                 // Right / Down
-      select: [9, 13, 27],              // Tab / Enter / Escape
+      select: [13],              // Enter
       open: [13, 32, 37, 38, 39, 40], // Enter / Space / Left / Up / Right / Down
       close: [9, 27]                   // Tab / Escape
     },
